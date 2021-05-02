@@ -1,0 +1,35 @@
+{
+  "mappings": [
+    {
+      "request": {
+        "method": "GET",
+        "url": "/json_request"
+      },
+      "response": {
+        "status": 200,
+        "bodyFileName": "hello.json"
+      }
+    },
+    {
+      "request": {
+        "method": "GET",
+        "url": "/json_request",
+        "bodyPatterns": [
+          {
+            "matchesJsonPath": "$[?(@.id == '123456789')]"
+          },
+          {
+            "matchesJsonPath": "$[?(@.date == '01/09/1952')]"
+          }
+        ]
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"message\": \"Hello user 123456789\"}",
+        "headers": {
+          "Content-Type": "text/plain"
+        }
+      }
+    }
+  ]
+}

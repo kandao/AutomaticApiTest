@@ -1,0 +1,10 @@
+{
+    "request": {
+        "method": "POST",
+        "url": "/post_delayed"
+    },
+    "response": {
+        "status": 200,
+        "fixedDelayMilliseconds": 2000
+    }
+}

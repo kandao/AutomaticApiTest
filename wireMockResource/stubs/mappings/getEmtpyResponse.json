@@ -1,0 +1,9 @@
+{
+    "request": {
+        "method": "GET",
+        "url": "/empty_response"
+    },
+    "response": {
+        "fault": "EMPTY_RESPONSE"
+    }
+}

@@ -1,0 +1,40 @@
+{
+  "mappings": [
+    {
+      "request": {
+        "method": "GET",
+        "url": "/form_request"
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"message\": \"Hello form user\"}",
+        "headers": {
+          "Content-Type": "text/plain"
+        }
+      }
+    },
+    {
+      "request": {
+        "method": "GET",
+        "url": "/form_request",
+        "multipartPatterns": [
+          {
+            "matchingType": "ANY",
+            "headers": {
+              "Content-Disposition": {
+                "contains": "name=\"id\""
+              }
+            }
+          }
+        ]
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"message\": \"Hello form user 123456789\"}",
+        "headers": {
+          "Content-Type": "text/plain"
+        }
+      }
+    }
+  ]
+}
