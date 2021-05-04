@@ -10,4 +10,4 @@ docker images --filter dangling=true
 docker rmi `docker images --filter dangling=true -q` 
 
 # Run WireMock docker image
-docker run -it --rm -p 8080:8080 wiremock-server
+docker run -it --rm -p 8484:8080 wiremock-server
