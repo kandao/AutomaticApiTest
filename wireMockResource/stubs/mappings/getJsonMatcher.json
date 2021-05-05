@@ -16,10 +16,10 @@
         "url": "/json_request",
         "bodyPatterns": [
           {
-            "matchesJsonPath": "$[?(@.id == '123456789')]"
+            "matchesJsonPath": "$[?(@.user_id == '123456789')]"
           },
           {
-            "matchesJsonPath": "$[?(@.date == '01/09/1952')]"
+            "matchesJsonPath": "$[?(@.device == 'ios14')]"
           }
         ]
       },

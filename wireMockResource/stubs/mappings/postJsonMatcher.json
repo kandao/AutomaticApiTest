@@ -1,0 +1,148 @@
+{
+  "mappings": [
+    {
+      "request": {
+        "method": "POST",
+        "url": "/post_json"
+      },
+      "response": {
+        "status": 200,
+        "bodyFileName": "hello.json"
+      }
+    },
+    {
+      "request": {
+        "method": "POST",
+        "url": "/post_json",
+        "bodyPatterns": [
+          {
+            "matchesJsonPath": "$[?(@.user_id == '123456789')]"
+          },
+          {
+            "matchesJsonPath": "$[?(@.device == 'ios14')]"
+          }
+        ]
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"message\": \"Hello user 123456789\"}",
+        "headers": {
+          "Content-Type": "text/plain"
+        }
+      }
+    },
+    {
+      "request": {
+        "method": "POST",
+        "url": "/post_json",
+        "bodyPatterns": [
+          {
+            "matchesJsonPath": "$[?(@.user_id == '123456789')]"
+          },
+          {
+            "matchesJsonPath": "$[?(@.device == 'ios13')]"
+          }
+        ]
+      },
+      "response": {
+        "status": 200,
+        "fixedDelayMilliseconds": 2000,
+        "body": "{\"message\": \"Hello user 123456789\"}",
+        "headers": {
+          "Content-Type": "text/plain"
+        }
+      }
+    },
+    
+    {
+      "request": {
+        "method": "POST",
+        "url": "/post_json",
+        "bodyPatterns": [
+          {
+            "matchesJsonPath": "$[?(@.user_id == '123456789')]"
+          },
+          {
+            "matchesJsonPath": "$[?(@.device == 'ios12')]"
+          }
+        ]
+      },
+      "response": {
+        "status": 400,
+        "body": "{\"message\": \"Legacy device\"}",
+        "headers": {
+          "Content-Type": "text/plain"
+        }
+      }
+    },
+    {
+      "request": {
+        "method": "POST",
+        "url": "/post_json",
+        "bodyPatterns": [
+          {
+            "matchesJsonPath": "$[?(@.device == 'ios10')]"
+          }
+        ]
+      },
+      "response": {
+        "status": 404,
+        "body": "{\"message\": \"Legacy device\"}",
+        "headers": {
+          "Content-Type": "text/plain"
+        }
+      }
+    },
+    {
+      "request": {
+        "method": "POST",
+        "url": "/post_json",
+        "bodyPatterns": [
+          {
+            "matchesJsonPath": "$[?(@.device == 'ios11')]"
+          }
+        ]
+      },
+      "response": {
+        "status": 500,
+        "body": "{\"message\": \"Legacy device\"}",
+        "headers": {
+          "Content-Type": "text/plain"
+        }
+      }
+    },
+    {
+      "request": {
+        "method": "POST",
+        "url": "/post_json",
+        "bodyPatterns": [
+          {
+            "matchesJsonPath": "$[?(@.device == 'ios9')]"
+          }
+        ]
+      },
+      "response": {
+        "status": 200,
+        "fixedDelayMilliseconds": 20000,
+        "body": "{\"message\": \"Hello user 123456789\"}",
+        "headers": {
+          "Content-Type": "text/plain"
+        }
+      }
+    },
+    {
+      "request": {
+        "method": "POST",
+        "url": "/post_json",
+        "bodyPatterns": [
+          {
+            "matchesJsonPath": "$[?(@.device == 'ios8')]"
+          }
+        ]
+      },
+      "response": {
+        "fault": "CONNECTION_RESET_BY_PEER"
+      }
+    }
+  ]
+}
