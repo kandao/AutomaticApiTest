@@ -1,6 +1,6 @@
 package com.kandao.apiapplication.resource;
 
-import com.kandao.apiapplication.Client.APIClient;
+import com.kandao.apiapplication.client.ApiClient;
 import com.kandao.apiapplication.model.User;
 import com.kandao.apiapplication.utils.JsonConverter;
 
@@ -15,7 +15,7 @@ import javax.ws.rs.core.Response;
 public class UserResource {
 
     @Inject
-    private APIClient apiClient;
+    private ApiClient apiClient;
 
     @GET
     @Produces(MediaType.TEXT_PLAIN)

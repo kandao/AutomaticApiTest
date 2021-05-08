@@ -1,4 +1,4 @@
-package com.kandao.apiapplication.Client;
+package com.kandao.apiapplication.client;
 
 import com.fasterxml.jackson.core.util.JacksonFeature;
 import com.kandao.apiapplication.utils.LoggerUtils;
@@ -12,7 +12,7 @@ import javax.ws.rs.core.Response;
 import java.util.logging.Level;
 
 @ApplicationScoped
-public class APIClient {
+public class ApiClient {
 
     private static final int TIMEOUT_MILLISECONDS = 10000;
 
