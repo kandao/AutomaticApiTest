@@ -6,15 +6,18 @@ import org.glassfish.jersey.client.ClientConfig;
 import org.glassfish.jersey.client.ClientProperties;
 
 import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
 import javax.ws.rs.client.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.util.logging.Level;
 
 @ApplicationScoped
 public class ApiClient {
 
-    private static final int TIMEOUT_MILLISECONDS = 10000;
+    private static final int TIMEOUT_MILLISECONDS = 2000;
+
+    @Inject
+    private LoggerUtils loggerUtils;
 
     public Response CallGetAPI(String path) {
         ClientConfig clientConfig = new ClientConfig();
@@ -30,9 +33,16 @@ public class ApiClient {
 
         Invocation.Builder request = webTarget.request(MediaType.APPLICATION_JSON);
 
-        Response response = request.get();
-        if (response.getStatus() != 200) {
-            LoggerUtils.getLogger().log(Level.SEVERE, "Status is " + response.getStatus());
+        Response response = null;
+        try {
+            response = request.get();
+            if (response.getStatus() != 200) {
+                loggerUtils.error("Status is " + response.getStatus());
+            }
+        } catch (Exception e) {
+            loggerUtils.error("Got exception");
+            loggerUtils.error(e.getMessage());
+            throw e;
         }
         return response;
     }
@@ -54,11 +64,12 @@ public class ApiClient {
         try {
             response = request.post(Entity.json(jsonString));
             if (response.getStatus() != 200) {
-                LoggerUtils.getLogger().log(Level.SEVERE, "Status is " + response.getStatus());
+                loggerUtils.error("Status is " + response.getStatus());
             }
         } catch (Exception e) {
-            LoggerUtils.getLogger().log(Level.SEVERE, "Got exception");
-            LoggerUtils.getLogger().log(Level.SEVERE, e.toString());
+            loggerUtils.error("Got exception");
+            loggerUtils.error(e.getMessage());
+            throw e;
         }
 
         return response;

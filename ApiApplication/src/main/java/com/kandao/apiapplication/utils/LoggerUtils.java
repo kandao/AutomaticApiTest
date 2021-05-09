@@ -1,15 +1,21 @@
 package com.kandao.apiapplication.utils;
 
-
-import lombok.experimental.UtilityClass;
-
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
-@UtilityClass
 public class LoggerUtils {
+
     private static final Logger logger = Logger.getLogger(LoggerUtils.class.getName());
 
-    public static Logger getLogger(){
-        return logger;
+    public void error(String errorMsg) {
+        logger.log(Level.SEVERE, errorMsg);
+    }
+
+    public void info(String infoMsg) {
+        logger.log(Level.INFO, infoMsg);
+    }
+
+    public void warn(String warnMsg) {
+        logger.log(Level.WARNING, warnMsg);
     }
 }
