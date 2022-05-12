@@ -4,11 +4,11 @@ import com.kandao.apiapplication.client.ApiClient;
 import com.kandao.apiapplication.model.User;
 import com.kandao.apiapplication.utils.JsonConverter;
 
-import javax.enterprise.context.RequestScoped;
-import javax.inject.Inject;
-import javax.ws.rs.*;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
+import jakarta.enterprise.context.RequestScoped;
+import jakarta.inject.Inject;
+import jakarta.ws.rs.*;
+import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
 
 @Path("user")
 @RequestScoped
